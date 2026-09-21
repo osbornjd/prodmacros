@@ -21,8 +21,15 @@
 # # Cosmics high-gain partial production, Aug 25, 2026 ana568_2026p001_v001
 # /sphenix/u/sphnxpro/Production2026/cosmics_calo_ana568_2026p001_v001/thisProd/pilots/autopilot_cosmics_calo_cosmics_ana568_2026p001_v001.yaml
 
-# Run3pp polyseed production
-/sphenix/u/sphnxpro/Production2026/run3pp_tracking_polyseed_combined_ana571_2026p002_v001/thisProd/pilots/autopilot_run3pp_tracking_polyseed_combined_physics_ana571_2026p002_v001.yaml
+# # Run3pp polyseed production
+# /sphenix/u/sphnxpro/Production2026/run3pp_tracking_polyseed_combined_ana571_2026p002_v001/thisProd/pilots/autopilot_run3pp_tracking_polyseed_combined_physics_ana571_2026p002_v001.yaml
+
+# # Run3oo polyseed production
+# /sphenix/u/sphnxpro/Production2026/run3oo_tracking_polyseed_combined_physics_ana571_2026p002_v001/thisProd/pilots/autopilot_run3oo_tracking_polyseed_combined_physics_ana571_2026p002_v001.yaml
+
+# # Run3auau polyseed production
+# /sphenix/u/sphnxpro/Production2026/run3auau_tracking_polyseed_combined_physics_ana571_2026p002_v001/thisProd/pilots/autopilot_run3auau_tracking_polyseed_combined_physics_ana571_2026p002_v001.yaml
+
 
 # Cosmics TRIGGERED production, Sep 4, 2026 ana569_pcdb001_v001
 /sphenix/u/sphnxpro/Production2026/cosmics_calo_ana569_pcdb001_v001/thisProd/pilots/autopilot_cosmics_calo_cosmics_ana569_pcdb001_v001.yaml
@@ -33,3 +40,11 @@
 # # Run3pp tracking DST_COMBINED test production, Sep 10, 2026 ana569_pcdb001_v666
 # /sphenix/u/sphnxpro/Production2026/run3pp_tracking_combined_ana569_pcdb001_v666/thisProd/pilots/autopilot_run3pp_tracking_physics_ana569_pcdb001_v666.yaml
 
+# Run3pp tracking DC Tree test production, Sep 18, 2026 ana571_2026p002_v002
+#/sphenix/u/sphnxpro/Production2026/run3pp_tracking_dctest_ana571_2026p002_v002/thisProd/pilots/autopilot_run3pp_tracking_dctest_physics_ana571_2026p002_v002.yaml
+
+# Run3pp tracking DC Tree test production once again, Sep 19, 2026 ana571_2026p002_v003
+/sphenix/u/sphnxpro/Production2026/run3pp_tracking_dctest_ana571_2026p002_v003/thisProd/pilots/autopilot_run3pp_tracking_dctest_physics_ana571_2026p002_v003.yaml
+
+# Run3pp tracking DC Tree test production once again, Sep 19, 2026 ana571_2026p002_v004
+#/sphenix/u/sphnxpro/Production2026/run3pp_tracking_dctest_ana571_2026p002_v004/thisProd/pilots/autopilot_run3pp_tracking_dctest_physics_ana571_2026p002_v004.yaml
