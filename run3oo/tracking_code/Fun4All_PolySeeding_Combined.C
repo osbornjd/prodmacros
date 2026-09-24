@@ -29,6 +29,8 @@
 #include <tpcqa/TpcLaserQA.h>
 #include <tpcqa/TpcRawHitQA.h>
 
+#include <tpcconditions/TpcConditionsReco.h>
+
 #include <trackingqa/InttClusterQA.h>
 #include <trackingqa/MicromegasClusterQA.h>
 #include <trackingqa/MvtxClusterQA.h>
@@ -79,6 +81,7 @@ R__LOAD_LIBRARY(libphool.so)
 R__LOAD_LIBRARY(libcdbobjects.so)
 R__LOAD_LIBRARY(libmvtx.so)
 R__LOAD_LIBRARY(libintt.so)
+R__LOAD_LIBRARY(libTpcConditions.so)
 R__LOAD_LIBRARY(libtpc.so)
 R__LOAD_LIBRARY(libmicromegas.so)
 R__LOAD_LIBRARY(libPHGarfield.so)
@@ -227,7 +230,7 @@ void Fun4All_PolySeeding_Combined(
   se->registerSubsystem(finder_svx);
 
   //==============================================================
-
+  se->registerSubsystem(new TpcConditionsReco());
   se->registerSubsystem(new Tpc_ModuleTrackReco());     // makes TPC_MODULETRACKS
   se->registerSubsystem(new Tpc_AssembledTrackReco());  // makes TPC_ASSEMBLEDTRACKS
 
