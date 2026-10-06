@@ -15,3 +15,11 @@ sphnxprod03:
     dstspider: on
 
 ###############################################################################
+
+  # Track building from combined-polyseed output
+  PROD_TRKR_TRACKS_run3oo:
+    config: run3oo_tracking_polyseed_combined_physics_PROD_TAG_VERSION.yaml
+    runlist: /sphenix/u/sphnxpro/Production2026/BRANCH/thisProd/runlist
+    jobprio: 30
+    submit: on
+    dstspider: on
