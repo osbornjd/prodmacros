@@ -54,6 +54,8 @@
 
 #include <phool/recoConsts.h>
 
+#include <tpcconditions/TpcConditionsReco.h>
+
 #include <tpctrackreco/TpcCrossingFinder.h>
 #include <tpctrackreco/TpcPolyClusterTrkrClusterConverter.h>
 #include <tpctrackreco/TpcPolyTrackSeedConverter.h>
@@ -77,6 +79,7 @@ R__LOAD_LIBRARY(libfun4all.so)
 R__LOAD_LIBRARY(libffamodules.so)
 R__LOAD_LIBRARY(libphool.so)
 R__LOAD_LIBRARY(libcdbobjects.so)
+R__LOAD_LIBRARY(libTpcConditions.so)
 R__LOAD_LIBRARY(libmvtx.so)
 R__LOAD_LIBRARY(libintt.so)
 R__LOAD_LIBRARY(libtpc.so)
@@ -227,7 +230,9 @@ void Fun4All_PolySeeding_Combined(
   se->registerSubsystem(finder_svx);
 
   //==============================================================
+  se->registerSubsystem(new TpcConditionsReco());
 
+ 
   se->registerSubsystem(new Tpc_ModuleTrackReco());     // makes TPC_MODULETRACKS
   se->registerSubsystem(new Tpc_AssembledTrackReco());  // makes TPC_ASSEMBLEDTRACKS
 
@@ -239,7 +244,6 @@ void Fun4All_PolySeeding_Combined(
   se->registerSubsystem(crossingFinder);
 
   auto *cluster = new Tpc_PolyClusterizer();  // makes TPC_POLYCLUSTERS
-  cluster->setUseSurveyGeometry(true);
   se->registerSubsystem(cluster);
 
   se->registerSubsystem(new Tpc_PolyTrackReco());      // makes TPC_POLYTRACKS
@@ -339,9 +343,6 @@ void Fun4All_PolySeeding_Combined(
   out->StripRunNode("GEOMETRY_IO");
   
   se->registerOutputManager(out);
-  auto *hm = QAHistManagerDef::getHistoManager();
-  std::string histoout = "HIST_" + outfilename;
-  hm->setOutfileName(histoout);
 
   if (nEvents < 0)
   {
@@ -352,6 +353,10 @@ void Fun4All_PolySeeding_Combined(
   Fun4AllMemoryHistograms::instance()->SaveHistos("testarena.root");
   se->PrintTimer();
 
+  TString qaname = "HIST_" + outfilename;
+  std::string qaOutputFileName(qaname.Data());
+  QAHistManagerDef::saveQARootFile(qaOutputFileName);
+  
   CDBInterface::instance()->Print();
   delete se;
   gROOT->EndOfProcessCleanups();
