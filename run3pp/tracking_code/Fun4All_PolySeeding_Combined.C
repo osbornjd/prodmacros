@@ -343,9 +343,6 @@ void Fun4All_PolySeeding_Combined(
   out->StripRunNode("GEOMETRY_IO");
   
   se->registerOutputManager(out);
-  auto *hm = QAHistManagerDef::getHistoManager();
-  std::string histoout = "HIST_" + outfilename;
-  hm->setOutfileName(histoout);
 
   if (nEvents < 0)
   {
@@ -356,6 +353,10 @@ void Fun4All_PolySeeding_Combined(
   Fun4AllMemoryHistograms::instance()->SaveHistos("testarena.root");
   se->PrintTimer();
 
+  TString qaname = "HIST_" + outfilename;
+  std::string qaOutputFileName(qaname.Data());
+  QAHistManagerDef::saveQARootFile(qaOutputFileName);
+  
   CDBInterface::instance()->Print();
   delete se;
   gROOT->EndOfProcessCleanups();
