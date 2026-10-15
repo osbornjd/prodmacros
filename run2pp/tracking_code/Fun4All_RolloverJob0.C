@@ -158,9 +158,9 @@ void Fun4All_RolloverJob0(
 
   Tpc_LaserEventIdentifying();
 
-  TPC_LaminationClustering();
-
   TPC_LaserClustering();
+
+  TPC_LaserPadAggregating();
 
   auto *tpcclusterizer = new TpcClusterizer;
   tpcclusterizer->Verbosity(0);
@@ -194,10 +194,10 @@ void Fun4All_RolloverJob0(
   out->AddNode("TRKR_CLUSTERCROSSINGASSOC");
   out->AddNode("LaserEventInfo");
   out->AddNode("GL1RAWHIT");
+  out->AddNode("LASER_AGGREGATED_PADS");
   if (G4TPC::ENABLE_CENTRAL_MEMBRANE_CLUSTERING)
   {
     out->AddNode("LASER_CLUSTER");
-    out->AddNode("LAMINATION_CLUSTER");
   }
   out->StripRunNode("CYLINDERGEOM_MVTX");
   out->StripRunNode("CYLINDERGEOM_INTT");
