@@ -29,6 +29,7 @@
 #include <tpcqa/TpcLaserQA.h>
 #include <tpcqa/TpcRawHitQA.h>
 
+#include <phgarfield/PHGarfield.h>
 #include <tpcconditions/TpcConditionsReco.h>
 
 #include <trackingqa/InttClusterQA.h>
@@ -231,6 +232,8 @@ void Fun4All_PolySeeding_Combined(
 
   //==============================================================
   se->registerSubsystem(new TpcConditionsReco());
+  se->registerSubsystem(new PHGarfield());
+
   se->registerSubsystem(new Tpc_ModuleTrackReco());     // makes TPC_MODULETRACKS
   se->registerSubsystem(new Tpc_AssembledTrackReco());  // makes TPC_ASSEMBLEDTRACKS
 

@@ -53,7 +53,7 @@
 #include <fun4all/SubsysReco.h>
 
 #include <phool/recoConsts.h>
-
+#include <phgarfield/PHGarfield.h>
 #include <tpcconditions/TpcConditionsReco.h>
 
 #include <tpctrackreco/TpcCrossingFinder.h>
@@ -106,8 +106,8 @@ R__LOAD_LIBRARY(libTrackingDiagnostics.so)
 
 void Fun4All_PolySeeding_Combined(
     const int nEvents = 10,
-    const std::string &inputfile = "DST_STREAMING_EVENT_combined_run3pp_ana561_2025p013_v001-00081612-00000.root",
-    const std::string &outfilename = "DST_TRACKSEEDS_run3pp_ana561_2025p013_v001-00081612-00000.root",
+    const std::string &inputfile = "DST_COMBINED_run3pp_ana571_2026p002_v001-00079513-00000.root",
+    const std::string &outfilename = "DST_TRACKSEEDS_run3pp_ana571_2026p002_v001-00079513-00000.root",
     const std::string &dbtag = "newcdbtag")
 {
   Fun4AllMemoryHistograms::instance()->Enable();
@@ -231,8 +231,11 @@ void Fun4All_PolySeeding_Combined(
 
   //==============================================================
   se->registerSubsystem(new TpcConditionsReco());
+  // Shared drift model for the crossing finder and the polyclusterizer;
+  // must be registered after TpcConditionsReco and before the polyseeding modules.
+  auto *garfield = new PHGarfield();
+  se->registerSubsystem(garfield);
 
- 
   se->registerSubsystem(new Tpc_ModuleTrackReco());     // makes TPC_MODULETRACKS
   se->registerSubsystem(new Tpc_AssembledTrackReco());  // makes TPC_ASSEMBLEDTRACKS
 

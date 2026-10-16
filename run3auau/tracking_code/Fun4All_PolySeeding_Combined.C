@@ -41,6 +41,7 @@
 #include <ffamodules/CDBInterface.h>
 #include <ffamodules/FlagHandler.h>
 
+#include <phgarfield/PHGarfield.h>
 #include <tpcconditions/TpcConditionsReco.h>
 
 #include <fun4all/Fun4AllDstInputManager.h>
@@ -231,7 +232,8 @@ void Fun4All_PolySeeding_Combined(
 
   //==============================================================
   se->registerSubsystem(new TpcConditionsReco());
-  
+  se->registerSubsystem(new PHGarfield());
+
   se->registerSubsystem(new Tpc_ModuleTrackReco());     // makes TPC_MODULETRACKS
   se->registerSubsystem(new Tpc_AssembledTrackReco());  // makes TPC_ASSEMBLEDTRACKS
 
