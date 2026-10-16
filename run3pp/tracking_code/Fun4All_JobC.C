@@ -303,6 +303,8 @@ void Fun4All_JobC(
             << " vdrift: " << G4TPC::tpc_drift_velocity_reco
             << std::endl;
 
+  TRACKING::use_slim_tracks = true;
+  
   G4TPC::ENABLE_MODULE_EDGE_CORRECTIONS = false;
 
   // to turn on the default static corrections, enable the two lines below
