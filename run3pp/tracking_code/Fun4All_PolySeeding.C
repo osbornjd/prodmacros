@@ -119,8 +119,10 @@ void Fun4All_PolySeeding(
 
   // tracking flags
   G4TPC::ENABLE_CENTRAL_MEMBRANE_CLUSTERING = true;
-  
-  G4TPC::REJECT_LASER_EVENTS = true;
+
+  // laser event rejection means that central production will not include any laser events and therefore useless for CM workflow
+  // this should be false to include laser data for CM workflow in production
+  G4TPC::REJECT_LASER_EVENTS = false;
   // Flag for running the tpc hit unpacker with zero suppression on
   TRACKING::tpc_zero_supp = true;
   
@@ -272,9 +274,9 @@ void Fun4All_PolySeeding(
 
   
   Tpc_LaserEventIdentifying();
-  TPC_LaminationClustering();
-
   TPC_LaserClustering();
+  TPC_LaserPadAggregating();
+
   Reject_Laser_Events();
 
   Tracking_Reco_TrackMatching_run2pp();
@@ -348,12 +350,11 @@ void Fun4All_PolySeeding(
   out->AddNode("TRKR_CLUSTERCROSSINGASSOC");
   out->AddNode("LaserEventInfo");
   out->AddNode("GL1RAWHIT");
+  out->AddNode("LASER_AGGREGATED_PADS");
   if (G4TPC::ENABLE_CENTRAL_MEMBRANE_CLUSTERING)
   {
     out->AddNode("LASER_CLUSTER");
-    out->AddNode("LAMINATION_CLUSTER");
   }
-  
   out->AddNode("TpcTrackSeedContainer");
   out->AddNode("SiliconTrackSeedContainer");
   out->AddNode("LaserEventInfo");
