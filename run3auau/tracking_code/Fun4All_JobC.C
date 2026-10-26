@@ -349,12 +349,8 @@ void Fun4All_JobC(
   out->AddNode("Sync");
   out->AddNode("EventHeader");
   out->AddNode("GL1RAWHIT");
-  out->AddNode("SvtxTrackSeedContainer");
   out->AddNode("SvtxTrackMap");
   out->AddNode("SvtxVertexMap");
-  out->AddNode("TRKR_CLUSTER_SEED");
-  out->AddNode("TpcTrackSeedContainer");
-  out->AddNode("SiliconTrackSeedContainer");
   se->registerOutputManager(out);
 
   se->run(nEvents);
